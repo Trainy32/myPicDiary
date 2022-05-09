@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <title>스파르타코딩클럽 | 부트스트랩 연습하기</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Gaegu', cursive;
+        }
+
+        .wrap {
+            width: 80%;
+            max-width: 700px;
+            margin: 50px auto;
+        }
+
+        .toList {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 10px;
+
+        }
+
+        .diaryBox {
+            font-size: 32px;
+            border: 1px solid grey;
+        }
+
+        .diaryTop {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .dateShow {
+            border-right: 1px solid grey;
+            padding: 10px 10px 5px 10px;
+            width: 70%;
+        }
+
+        .titleShow {
+            border-top: 1px solid grey;
+            border-bottom: 1px solid grey;
+            padding: 10px 10px 5px 10px;
+        }
+
+        .weatherShow {
+            padding: 10px 10px 5px 10px;
+            width: 30%;
+        }
+
+        .diaryImage {
+            border-bottom: 1px solid grey;
+        }
+
+        .textBox {
+            border: 1px solid grey;
+            margin: 10px;
+            padding: 0px 10px 0px 10px;
+            line-height: 64px;
+
+            background: repeating-linear-gradient(to bottom, transparent, transparent 64px, gray 64px, gray 65px);
+        }
+
+        .diaryFooter {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 22px;
+        }
+
+        .diaryEval > button {
+            background: none;
+            border: none;
+        }
+
+        #recommend:hover {
+            color: #007bff;
+            font-size: 23px;
+        }
+
+        #report:hover {
+            color: #ff0000;
+            font-size: 23px;
+        }
+
+        .commentPost {
+            margin: 30px 0px;
+        }
+
+
+
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            listing()
+        })
+
+        function listing() {
+            $.ajax({
+                type: "GET",
+                url: "/diary?sample_give=샘플데이터",
+                data: {},
+                success: function (response) {
+                    alert(response['msg'])
+                }
+            })
+        }
+
+        function posting() {
+            $.ajax({
+                type: "POST",
+                url: "/diary",
+                data: {sample_give: '샘플데이터'},
+                success: function (response) {
+                    alert(response['msg'])
+                }
+            })
+        }
+
+    </script>
+</head>
+
+<body>
+
+<div class="wrap">
+
+    <div class="toList">
+        <button type="button" class="btn btn-outline-secondary">리스트로</button>
+    </div>
+
+    <div class="diaryBox">
+        <div class="diaryTop">
+            <div class="dateShow">
+                 2022년 5월 9일 월요일
+            </div>
+            <div class="weatherShow">
+              날씨 : 맑음 ☀
+            </div>
+        </div>
+        <div class="titleShow">
+            제목 : 소원을 말해봐
+        </div>
+
+        <div class="diaryImage">
+            <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbc0R1C%2FbtrBEEBau8q%2FGcqKTRPkkTm6UYMwJKZcMk%2Fimg.png" alt="그림일기이미지" width="100%">
+        </div>
+        <div class="textBox">
+            1등을 하면 집에 돌아갈 수 있다고 했다. 내가 만든 자동차가 꼭 이겨야 돼!
+        </div>
+    </div>
+
+    <div class="diaryFooter">
+        <span id="diaryOwner">일기 주인 : 짱구 </span>
+        <div class="diaryEval">
+            <button id="recommend"> 추천 (192)</button>
+            ｜
+            <button id="report"> 신고</button>
+        </div>
+    </div>
+
+    <div class="commentPost">
+
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="코멘트를 남겨주세요" aria-describedby="button-addon2">
+            <button class="btn btn-primary" type="button" id="button-addon2">등록하기</button>
+        </div>
+    </div>
+
+    <div class="commentList">
+        <div class="card">
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>코멘트가 보여집니다.</p>
+                    <footer class="blockquote-footer"> 작성자명</footer>
+                </blockquote>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>코멘트가 보여집니다.</p>
+                    <footer class="blockquote-footer"> 작성자명</footer>
+                </blockquote>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>코멘트가 보여집니다.</p>
+                    <footer class="blockquote-footer"> 작성자명</footer>
+                </blockquote>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>코멘트가 보여집니다.</p>
+                    <footer class="blockquote-footer"> 작성자명</footer>
+                </blockquote>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+
+</html>
