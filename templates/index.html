@@ -32,20 +32,38 @@
         }
 
         .wrap {
-            width: 80%;
+            width : 80%;
             max-width: 700px;
             margin: 50px auto;
+
+        }
+
+        .header {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
         }
 
         .toList {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 10px;
+            font-size: 22px;
+            color: #3f3f3f;
+            padding: 5px 20px;
+            border: 1px solid gray;
+            border-radius: 25px;
+            background: none;
+        }
 
+        .toList:hover {
+            border: 2px solid #007bff;
+            font-size: 23px;
+            color: #007bff;
         }
 
         .diaryBox {
-            font-size: 32px;
+            background-image: url("https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FBOwEB%2FbtrBHUo6yQP%2FKKIoD94DAhBHsiupNAWVBK%2Fimg.png");
+            font-size: 30px;
+            font-weight: bold;
+            letter-spacing: 0.25em;
             border: 1px solid grey;
         }
 
@@ -57,19 +75,19 @@
 
         .dateShow {
             border-right: 1px solid grey;
-            padding: 10px 10px 5px 10px;
-            width: 70%;
+            padding: 10px 10px 5px 20px;
+            width: 65%;
         }
 
         .titleShow {
             border-top: 1px solid grey;
             border-bottom: 1px solid grey;
-            padding: 10px 10px 5px 10px;
+            padding: 10px 10px 5px 20px;
         }
 
         .weatherShow {
             padding: 10px 10px 5px 10px;
-            width: 30%;
+            width: 35%;
         }
 
         .diaryImage {
@@ -77,24 +95,29 @@
         }
 
         .textBox {
+            font-size: 32px;
             border: 1px solid grey;
             margin: 10px;
-            padding: 0px 10px 0px 10px;
+            padding: 0px 0px 0px 20px;
             line-height: 64px;
+            letter-spacing: 0.5em;
 
             background: repeating-linear-gradient(to bottom, transparent, transparent 64px, gray 64px, gray 65px);
         }
+
 
         .diaryFooter {
             margin-top: 20px;
             display: flex;
             justify-content: space-between;
             font-size: 22px;
+            font-weight: bold;
         }
 
         .diaryEval > button {
             background: none;
             border: none;
+            font-weight: bold;
         }
 
         #recommend:hover {
@@ -146,11 +169,9 @@
 </head>
 
 <body>
-
 <div class="wrap">
-
-    <div class="toList">
-        <button type="button" class="btn btn-outline-secondary">리스트로</button>
+    <div class="header">
+        <button class="toList">리스트로</button>
     </div>
 
     <div class="diaryBox">
@@ -159,11 +180,11 @@
                  2022년 5월 9일 월요일
             </div>
             <div class="weatherShow">
-              날씨 : 맑음 ☀
+              날씨: 맑음 ☀
             </div>
         </div>
         <div class="titleShow">
-            제목 : 소원을 말해봐
+            제목: 소원을 말해봐
         </div>
 
         <div class="diaryImage">
@@ -185,9 +206,9 @@
 
     <div class="commentPost">
 
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="코멘트를 남겨주세요" aria-describedby="button-addon2">
-            <button class="btn btn-primary" type="button" id="button-addon2">등록하기</button>
+        <div class="input-group input-group-lg">
+            <input type="text" class="form-control" placeholder="코멘트를 남겨주세요" aria-describedby="button-addon2" style="height: 80px">
+            <button class="btn btn-primary btn-lg" type="button" id="button-addon2">등록하기</button>
         </div>
     </div>
 
@@ -202,6 +223,7 @@
         </div>
         <div class="card">
             <div class="card-body">
+
                 <blockquote class="blockquote mb-0">
                     <p>코멘트가 보여집니다.</p>
                     <footer class="blockquote-footer"> 작성자명</footer>
