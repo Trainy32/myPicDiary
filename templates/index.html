@@ -40,12 +40,14 @@
         .toList {
             display: flex;
             justify-content: flex-end;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
 
         }
 
         .diaryBox {
-            font-size: 32px;
+            font-size: 30px;
+            font-weight: bold;
+            letter-spacing: 0.25em;
             border: 1px solid grey;
         }
 
@@ -57,19 +59,19 @@
 
         .dateShow {
             border-right: 1px solid grey;
-            padding: 10px 10px 5px 10px;
-            width: 70%;
+            padding: 10px 10px 5px 20px;
+            width: 65%;
         }
 
         .titleShow {
             border-top: 1px solid grey;
             border-bottom: 1px solid grey;
-            padding: 10px 10px 5px 10px;
+            padding: 10px 10px 5px 20px;
         }
 
         .weatherShow {
             padding: 10px 10px 5px 10px;
-            width: 30%;
+            width: 35%;
         }
 
         .diaryImage {
@@ -77,24 +79,29 @@
         }
 
         .textBox {
+            font-size: 32px;
             border: 1px solid grey;
             margin: 10px;
-            padding: 0px 10px 0px 10px;
+            padding: 0px 10px 0px 20px;
             line-height: 64px;
+            letter-spacing: 0.8em;
 
             background: repeating-linear-gradient(to bottom, transparent, transparent 64px, gray 64px, gray 65px);
         }
+
 
         .diaryFooter {
             margin-top: 20px;
             display: flex;
             justify-content: space-between;
             font-size: 22px;
+            font-weight: bold;
         }
 
         .diaryEval > button {
             background: none;
             border: none;
+            font-weight: bold;
         }
 
         #recommend:hover {
@@ -159,18 +166,18 @@
                  2022년 5월 9일 월요일
             </div>
             <div class="weatherShow">
-              날씨 : 맑음 ☀
+              날씨: 맑음 ☀
             </div>
         </div>
         <div class="titleShow">
-            제목 : 소원을 말해봐
+            제목: 소원을 말해봐
         </div>
 
         <div class="diaryImage">
             <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbc0R1C%2FbtrBEEBau8q%2FGcqKTRPkkTm6UYMwJKZcMk%2Fimg.png" alt="그림일기이미지" width="100%">
         </div>
         <div class="textBox">
-            1등을 하면 집에 돌아갈 수 있다고 했다. 내가 만든 자동차가 꼭 이겨야 돼!
+            1등을 <span>하면</span> 집에 돌아갈 수 있다고 했다. 내가 만든 자동차가 꼭 이겨야 돼!
         </div>
     </div>
 
