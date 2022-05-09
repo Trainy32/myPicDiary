@@ -32,18 +32,35 @@
         }
 
         .wrap {
-            width: 700px;
+            width : 80%;
+            max-width: 700px;
             margin: 50px auto;
+
         }
 
-        .toList {
+        .header {
             display: flex;
             justify-content: flex-end;
             margin-bottom: 20px;
+        }
 
+        .toList {
+            font-size: 22px;
+            color: #3f3f3f;
+            padding: 5px 20px;
+            border: 1px solid gray;
+            border-radius: 25px;
+            background: none;
+        }
+
+        .toList:hover {
+            border: 2px solid #007bff;
+            font-size: 23px;
+            color: #007bff;
         }
 
         .diaryBox {
+            background-image: url("https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FBOwEB%2FbtrBHUo6yQP%2FKKIoD94DAhBHsiupNAWVBK%2Fimg.png");
             font-size: 30px;
             font-weight: bold;
             letter-spacing: 0.25em;
@@ -78,15 +95,14 @@
         }
 
         .textBox {
-            font-size: 34px;
+            font-size: 32px;
             border: 1px solid grey;
             margin: 10px;
             padding: 0px 0px 0px 20px;
             line-height: 64px;
-            letter-spacing: 1.3em;
+            letter-spacing: 0.5em;
 
-            background-image: url("https://blog.kakaocdn.net/dn/bmmrPw/btrBEdqmQnm/9SIghHJ2u3ubgdBUP6eoiK/img.gif"), repeating-linear-gradient(to bottom, transparent, transparent 64px, gray 64px, gray 65px);
-            background-size: 10.1%;
+            background: repeating-linear-gradient(to bottom, transparent, transparent 64px, gray 64px, gray 65px);
         }
 
 
@@ -153,11 +169,9 @@
 </head>
 
 <body>
-
 <div class="wrap">
-
-    <div class="toList">
-        <button type="button" class="btn btn-outline-secondary">리스트로</button>
+    <div class="header">
+        <button class="toList">리스트로</button>
     </div>
 
     <div class="diaryBox">
@@ -192,9 +206,9 @@
 
     <div class="commentPost">
 
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="코멘트를 남겨주세요" aria-describedby="button-addon2">
-            <button class="btn btn-primary" type="button" id="button-addon2">등록하기</button>
+        <div class="input-group input-group-lg">
+            <input type="text" class="form-control" placeholder="코멘트를 남겨주세요" aria-describedby="button-addon2" style="height: 80px">
+            <button class="btn btn-primary btn-lg" type="button" id="button-addon2">등록하기</button>
         </div>
     </div>
 
@@ -209,6 +223,7 @@
         </div>
         <div class="card">
             <div class="card-body">
+
                 <blockquote class="blockquote mb-0">
                     <p>코멘트가 보여집니다.</p>
                     <footer class="blockquote-footer"> 작성자명</footer>
