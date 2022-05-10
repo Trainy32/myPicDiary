@@ -10,6 +10,7 @@ def main():
     # DB에서 저장된 단어 찾아서 HTML에 나타내기
     return render_template("index.html")
 
+## 일기 상세보기 페이지
 @app.route('/diary/<page_num>')
 def diary_view(page_num):
     diary_data = db.diary.find_one({'diary_num':int(page_num)})
