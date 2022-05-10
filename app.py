@@ -10,22 +10,25 @@ db = client.dbsparta_pjt_mypicDiary_test
 def home():
     return render_template('index.html')
 
-## API 역할을 하는 부분
+## 다이어리 내용을 가져오는 API
+@app.route('/diary/comment', methods=['GET'])
+def show_comment():
+    comments = list(db.comment.find({}, {'_id': False}))
 
-    #GET 샘플
-@app.route('/diary', methods=['GET'])
-def show_diary():
-    sample_receive = request.args.get('sample_give')
-    print(sample_receive)
-    return jsonify({'msg': 'GET 연결 완료!'})
+    return jsonify({'all_comment': comments})
 
 
-    #코멘트 저장
+## 코멘트 API
+@app.route('/diary/comment', methods=['GET'])
+def show_comment():
+    comments = list(db.comment.find({}, {'_id': False}))
+
+    return jsonify({'all_comment': comments})
+
 @app.route('/diary/comment', methods=['POST'])
 def save_comment():
     comment_receive = request.form['comment_give']
 
-    # 코멘트 리스트 길이 가져와서 인덱스 부여 -> 수정해야함함
     comment_count = list(db.comment.find({}, {'_id': False}))
     comment_num = len(comment_count) + 1
 
@@ -40,8 +43,9 @@ def save_comment():
 
     return jsonify({'msg': '코멘트 등록 완료!'})
 
-@app.route('/diary/comment', methods=['GET'])
-def show_comment():
+## 일기추천 API
+@app.route('/diary/recommend', methods=['GET'])
+def show_recommend():
     comments = list(db.comment.find({}, {'_id': False}))
 
     return jsonify({'all_comment': comments})

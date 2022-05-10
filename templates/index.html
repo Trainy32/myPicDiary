@@ -140,36 +140,13 @@
 
     <script>
         $(document).ready(function () {
-            listing()
             commentListing()
         })
-
-        function listing() {
-            $.ajax({
-                type: "GET",
-                url: "/diary?sample_give=샘플데이터",
-                data: {},
-                success: function (response) {
-                    alert(response['msg'])
-                }
-            })
-        }
-
-        function posting() {
-            $.ajax({
-                type: "POST",
-                url: "/diary",
-                data: {sample_give: '샘플데이터'},
-                success: function (response) {
-                    alert(response['msg'])
-                }
-            })
-        }
 
         function commentListing() {
             $.ajax({
                 type: "GET",
-                url: "/diary/comment
+                url: "/diary/comment?sample_give=샘플데이터",
                 data: {},
                 success: function (response) {
                     let comments = response['all_comment']
@@ -196,16 +173,19 @@
 
         function postComment() {
             let comment = $('#comment').val()
-
-            $.ajax({
-                type: "POST",
-                url: "/diary/comment",
-                data: {comment_give:comment},
-                success: function (response) {
-                    alert(response['msg'])
-                    window.location.reload()
-                }
-            })
+            if (comment=='') {
+                alert('코멘트를 입력해주세요')
+            } else {
+                $.ajax({
+                    type: "POST",
+                    url: "/diary/comment",
+                    data: {comment_give: comment},
+                    success: function (response) {
+                        alert(response['msg'])
+                        window.location.reload()
+                    }
+                })
+            }
         }
 
 
@@ -257,14 +237,6 @@
     </div>
 
     <div class="commentList" id="comments-box">
-        <div class="card">
-            <div class="card-body">
-                <blockquote class="blockquote mb-0">
-                    <p>코멘트가 보여집니다.</p>
-                    <footer class="blockquote-footer"> 훈이 <small>2022-05-10</small></footer>
-                </blockquote>
-            </div>
-        </div>
     </div>
 </div>
 
