@@ -165,6 +165,18 @@
             })
         }
 
+
+        function postComment() {
+            $.ajax({
+                type: "POST",
+                url: "/diary/comment",
+                data: {sample_give: '샘플데이터'},
+                success: function (response) {
+                    alert(response['msg'])
+                }
+            })
+        }
+
     </script>
 </head>
 
@@ -207,8 +219,8 @@
     <div class="commentPost">
 
         <div class="input-group input-group-lg">
-            <input type="text" class="form-control" placeholder="코멘트를 남겨주세요" aria-describedby="button-addon2" style="height: 80px">
-            <button class="btn btn-primary btn-lg" type="button" id="button-addon2">등록하기</button>
+            <input type="text" id="comment" class="form-control" placeholder="코멘트를 남겨주세요" aria-describedby="button-addon2" style="height: 80px">
+            <button onclick="postComment()" class="btn btn-primary btn-lg" type="button" id="button-addon2">등록하기</button>
         </div>
     </div>
 
