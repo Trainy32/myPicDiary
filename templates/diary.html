@@ -202,26 +202,26 @@
     <div class="diaryBox" id="diaryBox">
         <div class="diaryTop">
             <div class="dateShow">
-                 2022년 5월 9일 월요일
+                 {{ diary_data.diary_date }}
             </div>
             <div class="weatherShow">
-              날씨: 맑음 ☀
+              날씨:{{ diary_data.weather }}
             </div>
         </div>
         <div class="titleShow">
-            제목: 소원을 말해봐
+            제목: {{ diary_data.title }}
         </div>
 
         <div class="diaryImage">
-            <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbc0R1C%2FbtrBEEBau8q%2FGcqKTRPkkTm6UYMwJKZcMk%2Fimg.png" alt="그림일기이미지" width="100%">
+            <img src="{{ diary_data.image }}" alt="그림일기이미지" width="100%">
         </div>
         <div class="textBox">
-            1등을 하면 집에 돌아갈 수 있다고 했다. 내가 만든 자동차가 꼭 이겨야 돼!
+            {{ diary_data.texts }}
         </div>
     </div>
 
     <div class="diaryFooter">
-        <span id="diaryOwner">일기 주인 : 짱구 </span>
+        <span id="diaryOwner">일기 주인 : {{ diary_data.name }} </span>
         <div class="diaryEval">
             <button id="recommend"> 추천 (192)</button>
             ｜

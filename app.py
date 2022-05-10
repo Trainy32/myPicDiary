@@ -1,14 +1,20 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, jsonify, redirect, url_for
 app = Flask(__name__)
 
 from pymongo import MongoClient
 client = MongoClient('mongodb+srv://test:sparta@cluster0.kdc5v.mongodb.net/Cluster0?retryWrites=true&w=majority')
 db = client.dbsparta_pjt_mypicDiary_test
 
-## HTML을 주는 부분
 @app.route('/')
-def home():
-    return render_template('index.html')
+def main():
+    # DB에서 저장된 단어 찾아서 HTML에 나타내기
+    return render_template("index.html")
+
+@app.route('/diary/<page_num>')
+def diary_view(page_num):
+    diary_data = db.diary.find_one({'diary_num':int(page_num)})
+
+    return render_template('diary.html', diary_data = diary_data)
 
 
 ## 코멘트 API
