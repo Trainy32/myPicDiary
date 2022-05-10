@@ -11,11 +11,11 @@ def home():
     return render_template('index.html')
 
 ## 다이어리 내용을 가져오는 API
-@app.route('/diary/comment', methods=['GET'])
-def show_comment():
-    comments = list(db.comment.find({}, {'_id': False}))
+@app.route('/diary', methods=['GET'])
+def show_diary():
+    diaries = list(db.diary.find({}, {'_id': False}))
 
-    return jsonify({'all_comment': comments})
+    return jsonify({'all_diaries': diaries})
 
 
 ## 코멘트 API

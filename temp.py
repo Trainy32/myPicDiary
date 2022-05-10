@@ -35,3 +35,6 @@ def show_diary():
     diary-num_receive = request.form['diary-num_give']
 
     return jsonify({'msg': 'GET 연결 완료!'})
+
+
+
