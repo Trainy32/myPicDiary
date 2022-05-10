@@ -26,17 +26,25 @@ def save_comment():
     comment_receive = request.form['comment_give']
 
     # 코멘트 리스트 길이 가져와서 인덱스 부여 -> 수정해야함함
-    comment_list = list(db.comment.find({}, {'_id': False}))
-    comment_num = len(comment_list) + 1
+    comment_count = list(db.comment.find({}, {'_id': False}))
+    comment_num = len(comment_count) + 1
 
     doc = {
         'comment_num':comment_num,
-        'comment': comment_receive
+        'comment': comment_receive,
+        'name' : '임시이름 ',
+        'comment_date' : '2022-05-10'
     }
 
     db.comment.insert_one(doc)
 
-    return jsonify({'msg': 'POST 요청 완료!'})
+    return jsonify({'msg': '코멘트 등록 완료!'})
+
+@app.route('/diary/comment', methods=['GET'])
+def show_comment():
+    comments = list(db.comment.find({}, {'_id': False}))
+
+    return jsonify({'all_comment': comments})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
