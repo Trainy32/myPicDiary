@@ -180,7 +180,10 @@
                 $.ajax({
                     type: "POST",
                     url: "/diary/comment",
-                    data: {comment_give: comment},
+                    data: {
+                        comment_give: comment,
+                        diary_num_give : "{{ page_num }}"
+                    },
                     success: function (response) {
                         alert(response['msg'])
                         window.location.reload()
